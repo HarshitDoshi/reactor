@@ -1,4 +1,0 @@
-[build]
-base = "tasks-app/"
-command = "npm run build"
-publish = "build/"
