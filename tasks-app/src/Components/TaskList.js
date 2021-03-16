@@ -24,10 +24,10 @@ const Task = (props) => {
 const TaskList = () => {
   const [tasks, setTasks] = useState(data);
   const deleteTaskHandler = (taskId) => {
-    console.log(taskId);
-    const newList = tasks.filter((task) => task.id !== taskId);
-    console.log(newList);
-    setTasks(newList);
+    setTasks((oldList) => {
+      const newList = tasks.filter((task) => task.id !== taskId);
+      return newList;
+    });
   }
   return (
     <div className="flex flex-col justify-stretch">
@@ -42,7 +42,7 @@ const TaskList = () => {
           );
         })}
       </div>
-      <button className="text-white border border-solid border-red-600 bg-red-400 shadow-md rounded-lg m-2 p-2" onClick={() => setTasks([])}>Clear All</button>
+      <button className="text-white border border-solid border-red-600 bg-red-400 shadow-md rounded-lg m-2 p-2" onClick={() => setTasks(() => [])}>Clear All</button>
     </div>
   )
 }
